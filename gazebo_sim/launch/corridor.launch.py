@@ -1,50 +1,51 @@
-"""Launch file for Corridor environment in Gazebo with CPSA-v4.
+"""Launch Gazebo with the CPSA-NeuPAN reference adapter.
 
-Usage:
-  ros2 launch gazebo_sim corridor.launch.py noise_std:=0.02
+This launch file is source-level integration code. Provide a compatible CPSA
+checkpoint through the `cpsa_checkpoint` launch argument when running the
+adapter with a trained model.
 """
-from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription, ExecuteProcess
-from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch_ros.actions import Node
-from launch.substitutions import LaunchConfiguration
-from ament_index_python.packages import get_package_share_directory
+
 import os
+from launch import LaunchDescription
+from launch.actions import ExecuteProcess, DeclareLaunchArgument
+from launch.substitutions import LaunchConfiguration
+from launch_ros.actions import Node
 
 
 def generate_launch_description():
     noise_std = LaunchConfiguration('noise_std', default='0.0')
+    cpsa_checkpoint = LaunchConfiguration('cpsa_checkpoint', default='')
     pkg_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
     return LaunchDescription([
-        # Start Gazebo with corridor world
+        DeclareLaunchArgument('noise_std', default_value='0.0'),
+        DeclareLaunchArgument('cpsa_checkpoint', default_value=''),
         ExecuteProcess(
-            cmd=['gazebo', '--verbose',
-                 os.path.join(pkg_dir, 'worlds', 'corridor.world'),
-                 '-s', 'libgazebo_ros_factory.so'],
-            output='screen'
+            cmd=[
+                'gazebo', '--verbose',
+                os.path.join(pkg_dir, 'worlds', 'corridor.world'),
+                '-s', 'libgazebo_ros_factory.so',
+            ],
+            output='screen',
         ),
-        # Noise injection node
         Node(
             package='gazebo_sim',
             executable='lidar_noise_node.py',
             name='lidar_noise',
             parameters=[{'noise_std': noise_std}],
-            output='screen'
+            output='screen',
         ),
-        # CPSA-v4 adapter node
         Node(
             package='gazebo_sim',
             executable='cpsa_adapter_node.py',
             name='cpsa_adapter',
             parameters=[{
-                'cpsa_checkpoint': os.path.join(
-                    pkg_dir, 'experiments', 'cp_head_output', 'cpsa_v4_universal.pth'),
+                'cpsa_checkpoint': cpsa_checkpoint,
                 'noise_std': noise_std,
                 'env_type': 0,
                 'goal_x': 40.0,
                 'goal_y': 40.0,
             }],
-            output='screen'
+            output='screen',
         ),
     ])

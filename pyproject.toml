@@ -26,9 +26,5 @@ dependencies = [
   "ecos",
 ]
 
-[project.optional-dependencies]
-irsim = ["ir-sim>=2.4.0"]
-all = ["ir-sim>=2.4.0"]
-
 [tool.setuptools.packages.find]
 include = ["neupan*"]

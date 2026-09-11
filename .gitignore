@@ -28,9 +28,6 @@ results/
 *.pt
 *.npz
 *.npy
-!example/model/**/model_5000.pth
-!model/barn_robot/model_5000.pth
-!experiments/cp_head_output/cpsa_v4_universal.pth
 
 # LaTeX/editor artifacts
 *.aux

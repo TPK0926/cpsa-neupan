@@ -1,18 +1,20 @@
 # CPSA-NeuPAN
 
-This repository contains the source code for **Embodied Safe Navigation via Per-Point Conformal Safety Allocation**.
+This repository contains the public source code for **Embodied Safe Navigation via Per-Point Conformal Safety Allocation**.
 
-CPSA builds on NeuPAN's differentiable MPC-style point navigation pipeline and adds per-point conformal safety allocation. Instead of applying one uniform safety margin to every LiDAR obstacle point, CPSA predicts geometry-aware margins from local point features, temporal changes, passage structure, and global scene context. The resulting margins are injected into the point-wise navigation constraints, preserving clearance where needed while reducing unnecessary conservatism in free space.
+CPSA extends NeuPAN's differentiable point-navigation pipeline with per-point conformal safety allocation. Instead of applying one uniform safety margin to every LiDAR obstacle point, CPSA predicts geometry-aware safety margins from local obstacle structure, temporal variation, passage geometry, and global scene context. These margins are injected into the point-wise navigation constraints, improving the balance between safety and conservatism.
 
-## Main Components
+This repository is intentionally source-code focused. Experiment batches, generated results, robot deployment files, trained checkpoints, and paper build artifacts are not included.
 
-- `neupan/`: core NeuPAN planner with CPSA integration.
-- `neupan/blocks/cpsa_risk_net.py`: CPSA risk network, feature extraction, asymmetric loss, calibration, and online adapter.
+## Source Layout
+
+- `neupan/neupan.py`: high-level planner interface and CPSA integration path.
+- `neupan/blocks/`: differentiable navigation blocks, including point navigation, distance estimation, optimization, and CPSA risk modeling.
+- `neupan/blocks/cpsa_risk_net.py`: CPSA feature extraction, risk network, asymmetric loss, calibration helper, and online adapter.
 - `neupan/risk_calibration/`: conformal calibration and risk-budget allocation utilities.
-- `experiments/`: simulation experiment runners, ablation scripts, calibration scripts, and CPSA training pipeline.
-- `example/`: IR-SIM navigation scenarios and DUNE checkpoints for differential, Ackermann, polygon, and TurtleBot3-style robots.
-- `gazebo_sim/`: Gazebo/TurtleBot3 simulation helpers used for robot-level validation.
-- `real_robot/`: Limo real-robot deployment scripts and log extraction utilities.
+- `neupan/robot/`: robot kinematic models used by the planner.
+- `neupan/baselines/`: baseline safety-allocation and uncertainty modules retained for source-level comparison.
+- `gazebo_sim/`: Gazebo integration reference code, launch files, models, and worlds.
 
 ## Installation
 
@@ -24,68 +26,27 @@ cd cpsa-neupan
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -U pip
-pip install -e ".[irsim]"
+pip install -e .
 ```
 
-For CUDA training, install a PyTorch build matching your CUDA driver before installing this package.
+For CUDA acceleration in learning components, install a PyTorch build matching your CUDA driver before installing this package.
 
-## Quick Start
+## Minimal API
 
-Run an IR-SIM example with the base NeuPAN planner:
+```python
+from neupan import neupan
+from neupan.blocks.cpsa_risk_net import CPSARiskNet
+from neupan.risk_calibration.risk_budget import RiskBudgetAllocator
 
-```bash
-python example/run_exp.py -e corridor -d diff
+risk_net = CPSARiskNet()
+allocator = RiskBudgetAllocator(strategy="cpsa")
 ```
 
-Run CPSA in a single benchmark configuration:
+Planner construction requires a robot configuration, path generator configuration, optimization block configuration, and trained distance/safety models matching the target platform. Those deployment assets are intentionally not bundled in this source-only release.
 
-```bash
-python experiments/run_config.py corridor 2 cpsa_v4_full 10
-```
+## Gazebo Integration
 
-Run the visual test:
-
-```bash
-python experiments/visual_test.py --env corridor --noise 2 --method cpsa_v4
-```
-
-## CPSA Training
-
-The released repository includes a compact CPSA checkpoint at:
-
-```text
-experiments/cp_head_output/cpsa_v4_universal.pth
-```
-
-To collect new data and retrain:
-
-```bash
-python experiments/train_cpsa_v4.py collect --noise_levels 0.0 0.02 0.03 0.05 --n_episodes 50
-python experiments/train_cpsa_v4.py train --epochs 300
-python experiments/train_cpsa_v4.py validate --noise_levels 0.0 0.02 0.05 --n_episodes 30
-```
-
-Large raw training tensors are intentionally not included in the public release. Regenerate them with the `collect` command when needed.
-
-## Reproducing Paper Experiments
-
-```bash
-bash experiments/run_all.sh
-python experiments/run_full_matrix.py
-python experiments/run_ablation.py
-```
-
-See `docs/REPRODUCTION.md` for the cleaned release layout and expected workflow.
-
-## Real-Robot Deployment
-
-The `real_robot/` folder contains ROS-side integration code used for Limo deployment. Typical method names are:
-
-- `vanilla`: original NeuPAN behavior.
-- `cp_global`: scalar conformal safety margin.
-- `cpsa_v4`: per-point CPSA safety allocation.
-
-Update robot-specific ROS topics, frame names, and checkpoint paths before running on a new platform.
+`gazebo_sim/` keeps the ROS2/Gazebo adapter source, simulation worlds, and model files used during development. These files are included as integration reference code. Running them requires a ROS2/Gazebo workspace and external planner/checkpoint assets configured for the target robot.
 
 ## License
 
@@ -93,4 +54,4 @@ This code is released under the GPL-3.0 license, following the upstream NeuPAN l
 
 ## Acknowledgement
 
-This project is based on NeuPAN. Please also cite the original NeuPAN work when using this repository.
+This project builds on NeuPAN. Please also cite the original NeuPAN work when using this repository.
