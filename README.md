@@ -19,7 +19,7 @@ CPSA builds on NeuPAN's differentiable MPC-style point navigation pipeline and a
 Python 3.10 or newer is recommended.
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/TPK0926/cpsa-neupan.git
 cd cpsa-neupan
 python3 -m venv .venv
 source .venv/bin/activate
