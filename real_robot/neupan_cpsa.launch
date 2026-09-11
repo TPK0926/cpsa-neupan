@@ -1,0 +1,26 @@
+<launch>
+    <!-- 切换方式:
+         vanilla:   roslaunch neupan_ros neupan_cpsa.launch
+         cpsa_v4:    roslaunch neupan_ros neupan_cpsa.launch core_type:=cpsa_core.py method:=cpsa_v4
+         cp_global: roslaunch neupan_ros neupan_cpsa.launch core_type:=cpsa_core.py method:=cp_global
+    -->
+    <arg name="core_type" default="neupan_node.py" />
+    <arg name="method"     default="vanilla" />
+
+    <param name="robot_description" command="$(find xacro)/xacro '$(find limo_description)/urdf/limo_four_diff.xacro'" />
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+    <node pkg="neupan_ros" type="$(arg core_type)" name="neupan_node" output="screen">
+        <param name="config_file" value="$(find neupan_ros)/config/limo_config.yaml" />
+        <rosparam command="load" file="$(find neupan_ros)/config/limo_config.yaml" />
+        <remap from="/scan" to="/scan" />
+        <remap from="/odom" to="/odom" />
+        <remap from="/cmd_vel" to="/cmd_vel" />
+        <remap from="/neupan_goal" to="/move_base_simple/goal"/>
+        <param name="method" value="$(arg method)"/>
+    </node>
+
+    <node pkg="tf" type="static_transform_publisher" name="link_fixer" args="0 0 0 0 0 0 laser_link laser 100" />
+    <node pkg="tf" type="static_transform_publisher" name="map_odom_broadcaster" args="0 0 0 0 0 0 map odom 100" />
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find neupan_ros)/config/default.rviz" />
+</launch>

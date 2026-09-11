@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="tb3_irs_nonobs">
+    <physics type="ode"><max_step_size>0.001</max_step_size><real_time_factor>1</real_time_factor></physics>
+    <include><uri>model://sun</uri></include>
+    <include><uri>model://ground_plane</uri></include>
+
+    <include><uri>model://turtlebot3_burger</uri><name>turtlebot3</name>
+      <pose>0.200 2.600 0.01 0 0 0</pose></include>
+  </world>
+</sdf>

@@ -1,0 +1,96 @@
+<?xml version="1.0" ?>
+<!-- Gazebo world matching IR-SIM Corridor environment.
+     World: 70m x 23m, robot 1.6x2.0m, 6 static obstacles.
+     Walls form a corridor, 4 inner obstacles create maze.
+     Start: (-5, 20, 0), Goal: (40, 40, 0) in IR-SIM coords.
+     In Gazebo: map y -> x, map x -> y (IR-SIM offset applied). -->
+<sdf version="1.6">
+  <world name="corridor">
+    <!-- Physics -->
+    <physics type="ode">
+      <max_step_size>0.01</max_step_size>
+      <real_time_factor>1</real_time_factor>
+    </physics>
+    <!-- Sun -->
+    <include><uri>model://sun</uri></include>
+    <!-- Ground plane -->
+    <include><uri>model://ground_plane</uri></include>
+
+    <!-- === Boundary walls forming the corridor === -->
+    <!-- Top wall: IR-SIM [30, 25, 0], 70x2m -->
+    <model name="top_wall">
+      <static>true</static>
+      <pose>30 25 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>70 2 1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>70 2 1</size></box></geometry>
+          <material><ambient>0.7 0.7 0.7 1</ambient><diffuse>0.7 0.7 0.7 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+    <!-- Bottom wall: IR-SIM [30, 15, 0], 70x2m -->
+    <model name="bottom_wall">
+      <static>true</static>
+      <pose>30 15 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>70 2 1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>70 2 1</size></box></geometry>
+          <material><ambient>0.7 0.7 0.7 1</ambient><diffuse>0.7 0.7 0.7 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- === Inner obstacles (matching IR-SIM positions) === -->
+    <!-- Obstacle 3: [10, 18.5, 1.57], 5x2m (vertical) -->
+    <model name="obs_3">
+      <static>true</static>
+      <pose>10 18.5 0.5 0 0 1.5707963</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>5 2 1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>5 2 1</size></box></geometry>
+          <material><ambient>0.8 0.3 0.3 1</ambient><diffuse>0.8 0.3 0.3 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+    <!-- Obstacle 4: [23, 21.5, 1.57], 5x2m (vertical) -->
+    <model name="obs_4">
+      <static>true</static>
+      <pose>23 21.5 0.5 0 0 1.5707963</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>5 2 1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>5 2 1</size></box></geometry>
+          <material><ambient>0.8 0.3 0.3 1</ambient><diffuse>0.8 0.3 0.3 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+    <!-- Obstacle 5: [36, 17, 2.1], 6x2m (angled) -->
+    <model name="obs_5">
+      <static>true</static>
+      <pose>36 17 0.5 0 0 2.1</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>6 2 1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>6 2 1</size></box></geometry>
+          <material><ambient>0.8 0.3 0.3 1</ambient><diffuse>0.8 0.3 0.3 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+    <!-- Obstacle 6: [50, 22, 4.3], 5x2m (angled) -->
+    <model name="obs_6">
+      <static>true</static>
+      <pose>50 22 0.5 0 0 4.3</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>5 2 1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>5 2 1</size></box></geometry>
+          <material><ambient>0.8 0.3 0.3 1</ambient><diffuse>0.8 0.3 0.3 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Robot spawn: IR-SIM start [-5, 20, 0] -->
+    <include>
+      <uri>model://diff_robot</uri>
+      <name>diff_robot</name>
+      <pose>-5 20 0.25 0 0 0</pose>
+    </include>
+  </world>
+</sdf>

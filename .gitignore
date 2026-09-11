@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Build outputs
+build/
+dist/
+install/
+log/
+
+# Experiment outputs
+animation/
+animation_buffer/
+*_output/
+*_output*/
+results/
+*.log
+*.jsonl
+*.csv
+
+# Large generated data
+*.pt
+*.npz
+*.npy
+!example/model/**/model_5000.pth
+!model/barn_robot/model_5000.pth
+!experiments/cp_head_output/cpsa_v4_universal.pth
+
+# LaTeX/editor artifacts
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.toc
+.DS_Store
+
+# Local/private notes
+*.docx
+*.rar
+*.zip

@@ -1,0 +1,97 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="diff_robot">
+    <static>false</static>
+    <link name="base_link">
+      <inertial>
+        <mass>50.0</mass>
+        <inertia>
+          <ixx>14.583</ixx><iyy>8.333</iyy><izz>22.583</izz>
+          <ixy>0</ixy><ixz>0</ixz><iyz>0</iyz>
+        </inertia>
+      </inertial>
+      <collision name="base_collision">
+        <geometry>
+          <box><size>1.6 2.0 0.5</size></box>
+        </geometry>
+      </collision>
+      <visual name="base_visual">
+        <geometry>
+          <box><size>1.6 2.0 0.5</size></box>
+        </geometry>
+        <material>
+          <ambient>0.2 0.4 0.8 1</ambient>
+          <diffuse>0.2 0.4 0.8 1</diffuse>
+        </material>
+      </visual>
+      <sensor name="lidar2d" type="ray">
+        <pose>0.8 0 0.3 0 0 0</pose>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>100</samples>
+              <resolution>1</resolution>
+              <min_angle>-1.5707963</min_angle>
+              <max_angle>1.5707963</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.05</min>
+            <max>10.0</max>
+            <resolution>0.01</resolution>
+          </range>
+        </ray>
+        <plugin name="lidar_plugin" filename="libgazebo_ros_ray_sensor.so">
+          <ros>
+            <namespace>/robot</namespace>
+            <remapping>~/out:=scan</remapping>
+          </ros>
+          <output_type>sensor_msgs/LaserScan</output_type>
+          <frame_name>base_link</frame_name>
+        </plugin>
+        <always_on>true</always_on>
+        <update_rate>10</update_rate>
+      </sensor>
+    </link>
+    <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
+      <ros>
+        <namespace>/robot</namespace>
+      </ros>
+      <left_joint>left_wheel_joint</left_joint>
+      <right_joint>right_wheel_joint</right_joint>
+      <wheel_separation>2.2</wheel_separation>
+      <wheel_diameter>0.3</wheel_diameter>
+      <max_wheel_torque>100</max_wheel_torque>
+      <max_wheel_acceleration>10.0</max_wheel_acceleration>
+      <command_topic>cmd_vel</command_topic>
+      <odometry_topic>odom</odometry_topic>
+      <odometry_frame>odom</odometry_frame>
+      <robot_base_frame>base_link</robot_base_frame>
+      <publish_odom>true</publish_odom>
+      <publish_odom_tf>true</publish_odom_tf>
+      <publish_wheel_tf>false</publish_wheel_tf>
+    </plugin>
+    <link name="left_wheel_link">
+      <pose relative_to="base_link">0 1.1 -0.1 1.5707963 0 0</pose>
+      <inertial><mass>2</mass><inertia><ixx>0.01</ixx><iyy>0.01</iyy><izz>0.01</izz></inertia></inertial>
+      <collision name="collision"><geometry><cylinder><radius>0.15</radius><length>0.1</length></cylinder></geometry></collision>
+      <visual name="visual"><geometry><cylinder><radius>0.15</radius><length>0.1</length></cylinder></geometry><material><ambient>0.1 0.1 0.1 1</ambient></material></visual>
+    </link>
+    <joint name="left_wheel_joint" type="revolute">
+      <parent>base_link</parent><child>left_wheel_link</child>
+      <axis><xyz>0 1 0</xyz></axis>
+      <limit><lower>-1e16</lower><upper>1e16</upper></limit>
+    </joint>
+    <link name="right_wheel_link">
+      <pose relative_to="base_link">0 -1.1 -0.1 1.5707963 0 0</pose>
+      <inertial><mass>2</mass><inertia><ixx>0.01</ixx><iyy>0.01</iyy><izz>0.01</izz></inertia></inertial>
+      <collision name="collision"><geometry><cylinder><radius>0.15</radius><length>0.1</length></cylinder></geometry></collision>
+      <visual name="visual"><geometry><cylinder><radius>0.15</radius><length>0.1</length></cylinder></geometry><material><ambient>0.1 0.1 0.1 1</ambient></material></visual>
+    </link>
+    <joint name="right_wheel_joint" type="revolute">
+      <parent>base_link</parent><child>right_wheel_link</child>
+      <axis><xyz>0 1 0</xyz></axis>
+      <limit><lower>-1e16</lower><upper>1e16</upper></limit>
+    </joint>
+  </model>
+</sdf>

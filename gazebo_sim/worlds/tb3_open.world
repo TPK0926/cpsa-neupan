@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="tb3_open">
+    <physics type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+    </physics>
+    <include><uri>model://sun</uri></include>
+    <include><uri>model://ground_plane</uri></include>
+
+    <!-- Open corridor: 3m wide, 25m long, NO obstacles -->
+    <model name="top_wall">
+      <static>true</static>
+      <pose>12.5 6.5 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>25 0.3 1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>25 0.3 1</size></box></geometry>
+          <material><ambient>0.7 0.7 0.7 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+    <model name="bottom_wall">
+      <static>true</static>
+      <pose>12.5 3.5 0.5 0 0 0</pose>
+      <link name="link">
+        <collision name="c"><geometry><box><size>25 0.3 1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>25 0.3 1</size></box></geometry>
+          <material><ambient>0.7 0.7 0.7 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <include>
+      <uri>model://turtlebot3_burger</uri>
+      <name>turtlebot3</name>
+      <pose>0 5 0.01 0 0 0</pose>
+    </include>
+  </world>
+</sdf>

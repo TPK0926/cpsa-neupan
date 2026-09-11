@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="tb3_irs_corridor">
+    <physics type="ode"><max_step_size>0.001</max_step_size><real_time_factor>1</real_time_factor></physics>
+    <include><uri>model://sun</uri></include>
+    <include><uri>model://ground_plane</uri></include>
+    <model name="obs_0"><static>true</static><pose>3.240 4.200 0.5 0 0 0.000</pose>
+      <link name="link"><collision name="c"><geometry><box><size>8.400 0.240 1.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>8.400 0.240 1.0</size></box></geometry>
+          <material><ambient>0.9 0.4 0.3 1</ambient></material></visual></link></model>
+    <model name="obs_1"><static>true</static><pose>3.240 3.000 0.5 0 0 0.000</pose>
+      <link name="link"><collision name="c"><geometry><box><size>8.400 0.240 1.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>8.400 0.240 1.0</size></box></geometry>
+          <material><ambient>0.9 0.4 0.3 1</ambient></material></visual></link></model>
+    <model name="obs_2"><static>true</static><pose>0.840 3.420 0.5 0 0 1.570</pose>
+      <link name="link"><collision name="c"><geometry><box><size>0.600 0.240 1.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.600 0.240 1.0</size></box></geometry>
+          <material><ambient>0.9 0.4 0.3 1</ambient></material></visual></link></model>
+    <model name="obs_3"><static>true</static><pose>2.400 3.780 0.5 0 0 1.570</pose>
+      <link name="link"><collision name="c"><geometry><box><size>0.600 0.240 1.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.600 0.240 1.0</size></box></geometry>
+          <material><ambient>0.9 0.4 0.3 1</ambient></material></visual></link></model>
+    <model name="obs_4"><static>true</static><pose>3.960 3.240 0.5 0 0 2.100</pose>
+      <link name="link"><collision name="c"><geometry><box><size>0.720 0.240 1.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.720 0.240 1.0</size></box></geometry>
+          <material><ambient>0.9 0.4 0.3 1</ambient></material></visual></link></model>
+    <model name="obs_5"><static>true</static><pose>5.640 3.840 0.5 0 0 4.300</pose>
+      <link name="link"><collision name="c"><geometry><box><size>0.600 0.240 1.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.600 0.240 1.0</size></box></geometry>
+          <material><ambient>0.9 0.4 0.3 1</ambient></material></visual></link></model>
+
+    <include><uri>model://turtlebot3_burger</uri><name>turtlebot3</name>
+      <pose>0.500 3.600 0.01 0 0 0</pose></include>
+  </world>
+</sdf>

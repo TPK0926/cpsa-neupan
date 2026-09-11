@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="tb3_clutter">
+    <physics type="ode"><max_step_size>0.001</max_step_size><real_time_factor>1</real_time_factor></physics>
+    <include><uri>model://sun</uri></include>
+    <include><uri>model://ground_plane</uri></include>
+
+    <!-- Boundary: 20m wide, 10m tall arena -->
+    <model name="top_wall"><static>true</static><pose>10 10 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><box><size>20 0.3 1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>20 0.3 1</size></box></geometry><material><ambient>0.7 0.7 0.7 1</ambient></material></visual></link></model>
+    <model name="bottom_wall"><static>true</static><pose>10 0 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><box><size>20 0.3 1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>20 0.3 1</size></box></geometry><material><ambient>0.7 0.7 0.7 1</ambient></material></visual></link></model>
+
+    <!-- Row 1 (x=6): 3 pillars forming 2 gates, gap ~0.6m each -->
+    <model name="p1a"><static>true</static><pose>6 2.0 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><cylinder><radius>0.15</radius><length>1</length></cylinder></geometry></collision>
+        <visual name="v"><geometry><cylinder><radius>0.15</radius><length>1</length></cylinder></geometry><material><ambient>0.85 0.35 0.25 1</ambient></material></visual></link></model>
+    <model name="p1b"><static>true</static><pose>6 4.5 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><cylinder><radius>0.15</radius><length>1</length></cylinder></geometry></collision>
+        <visual name="v"><geometry><cylinder><radius>0.15</radius><length>1</length></cylinder></geometry><material><ambient>0.85 0.35 0.25 1</ambient></material></visual></link></model>
+    <model name="p1c"><static>true</static><pose>6 7.0 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><cylinder><radius>0.15</radius><length>1</length></cylinder></geometry></collision>
+        <visual name="v"><geometry><cylinder><radius>0.15</radius><length>1</length></cylinder></geometry><material><ambient>0.85 0.35 0.25 1</ambient></material></visual></link></model>
+
+    <!-- Block at x=9, offset to force approach to Row 2 -->
+    <model name="blk1"><static>true</static><pose>9 3.2 0.5 0 0 0.2</pose>
+      <link name="link"><collision name="c"><geometry><box><size>1.0 0.3 1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>1.0 0.3 1</size></box></geometry><material><ambient>0.6 0.6 0.7 1</ambient></material></visual></link></model>
+
+    <!-- Row 2 (x=12): 2 pillars, 0.55m gate at center -->
+    <model name="p2a"><static>true</static><pose>12 4.35 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><cylinder><radius>0.20</radius><length>1</length></cylinder></geometry></collision>
+        <visual name="v"><geometry><cylinder><radius>0.20</radius><length>1</length></cylinder></geometry><material><ambient>0.85 0.35 0.25 1</ambient></material></visual></link></model>
+    <model name="p2b"><static>true</static><pose>12 5.50 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><cylinder><radius>0.20</radius><length>1</length></cylinder></geometry></collision>
+        <visual name="v"><geometry><cylinder><radius>0.20</radius><length>1</length></cylinder></geometry><material><ambient>0.85 0.35 0.25 1</ambient></material></visual></link></model>
+
+    <!-- Row 3 (x=17): block + pillar, 0.50m gap -->
+    <model name="blk2"><static>true</static><pose>17 3.8 0.5 0 0 -0.15</pose>
+      <link name="link"><collision name="c"><geometry><box><size>0.8 0.3 1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.8 0.3 1</size></box></geometry><material><ambient>0.6 0.6 0.7 1</ambient></material></visual></link></model>
+    <model name="p3a"><static>true</static><pose>17 5.85 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><cylinder><radius>0.22</radius><length>1</length></cylinder></geometry></collision>
+        <visual name="v"><geometry><cylinder><radius>0.22</radius><length>1</length></cylinder></geometry><material><ambient>0.85 0.35 0.25 1</ambient></material></visual></link></model>
+    <model name="p3b"><static>true</static><pose>17 8.0 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><cylinder><radius>0.18</radius><length>1</length></cylinder></geometry></collision>
+        <visual name="v"><geometry><cylinder><radius>0.18</radius><length>1</length></cylinder></geometry><material><ambient>0.85 0.35 0.25 1</ambient></material></visual></link></model>
+
+    <include><uri>model://turtlebot3_burger</uri><name>turtlebot3</name><pose>0 5 0.01 0 0 0</pose></include>
+  </world>
+</sdf>

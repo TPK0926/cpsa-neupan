@@ -1,0 +1,645 @@
+{
+  "description": "BARN benchmark worlds for CPSA-v4 evaluation",
+  "grid_size": 30,
+  "cyl_radius": 0.075,
+  "robot_size": "0.5x0.4m",
+  "robot_radius_cells": 1,
+  "num_worlds": 30,
+  "difficulty_counts": {
+    "easy": 13,
+    "medium": 10,
+    "hard": 7
+  },
+  "worlds": [
+    {
+      "world_id": 0,
+      "filename": "barn_0000.world",
+      "seed": 0,
+      "fill_pct": 0.109,
+      "obs_pct": 0.098,
+      "difficulty": "easy",
+      "start": {
+        "row": 2,
+        "col": 0,
+        "x": -4.05,
+        "y": 5.175
+      },
+      "goal": {
+        "row": 2,
+        "col": 29,
+        "x": -4.05,
+        "y": 9.525
+      },
+      "path_len": 30
+    },
+    {
+      "world_id": 1,
+      "filename": "barn_0001.world",
+      "seed": 2,
+      "fill_pct": 0.109,
+      "obs_pct": 0.081,
+      "difficulty": "easy",
+      "start": {
+        "row": 2,
+        "col": 0,
+        "x": -4.05,
+        "y": 5.175
+      },
+      "goal": {
+        "row": 10,
+        "col": 29,
+        "x": -2.85,
+        "y": 9.525
+      },
+      "path_len": 31
+    },
+    {
+      "world_id": 2,
+      "filename": "barn_0002.world",
+      "seed": 4,
+      "fill_pct": 0.104,
+      "obs_pct": 0.088,
+      "difficulty": "easy",
+      "start": {
+        "row": 3,
+        "col": 0,
+        "x": -3.9,
+        "y": 5.175
+      },
+      "goal": {
+        "row": 2,
+        "col": 29,
+        "x": -4.05,
+        "y": 9.525
+      },
+      "path_len": 30
+    },
+    {
+      "world_id": 3,
+      "filename": "barn_0003.world",
+      "seed": 6,
+      "fill_pct": 0.109,
+      "obs_pct": 0.096,
+      "difficulty": "easy",
+      "start": {
+        "row": 2,
+        "col": 0,
+        "x": -4.05,
+        "y": 5.175
+      },
+      "goal": {
+        "row": 10,
+        "col": 29,
+        "x": -2.85,
+        "y": 9.525
+      },
+      "path_len": 30
+    },
+    {
+      "world_id": 4,
+      "filename": "barn_0004.world",
+      "seed": 8,
+      "fill_pct": 0.122,
+      "obs_pct": 0.09,
+      "difficulty": "easy",
+      "start": {
+        "row": 2,
+        "col": 0,
+        "x": -4.05,
+        "y": 5.175
+      },
+      "goal": {
+        "row": 2,
+        "col": 29,
+        "x": -4.05,
+        "y": 9.525
+      },
+      "path_len": 30
+    },
+    {
+      "world_id": 5,
+      "filename": "barn_0005.world",
+      "seed": 10,
+      "fill_pct": 0.124,
+      "obs_pct": 0.097,
+      "difficulty": "easy",
+      "start": {
+        "row": 2,
+        "col": 0,
+        "x": -4.05,
+        "y": 5.175
+      },
+      "goal": {
+        "row": 10,
+        "col": 29,
+        "x": -2.85,
+        "y": 9.525
+      },
+      "path_len": 30
+    },
+    {
+      "world_id": 6,
+      "filename": "barn_0006.world",
+      "seed": 12,
+      "fill_pct": 0.126,
+      "obs_pct": 0.106,
+      "difficulty": "easy",
+      "start": {
+        "row": 2,
+        "col": 0,
+        "x": -4.05,
+        "y": 5.175
+      },
+      "goal": {
+        "row": 10,
+        "col": 29,
+        "x": -2.85,
+        "y": 9.525
+      },
+      "path_len": 30
+    },
+    {
+      "world_id": 7,
+      "filename": "barn_0007.world",
+      "seed": 14,
+      "fill_pct": 0.125,
+      "obs_pct": 0.102,
+      "difficulty": "easy",
+      "start": {
+        "row": 3,
+        "col": 0,
+        "x": -3.9,
+        "y": 5.175
+      },
+      "goal": {
+        "row": 2,
+        "col": 29,
+        "x": -4.05,
+        "y": 9.525
+      },
+      "path_len": 30
+    },
+    {
+      "world_id": 8,
+      "filename": "barn_0008.world",
+      "seed": 16,
+      "fill_pct": 0.132,
+      "obs_pct": 0.12,
+      "difficulty": "easy",
+      "start": {
+        "row": 2,
+        "col": 0,
+        "x": -4.05,
+        "y": 5.175
+      },
+      "goal": {
+        "row": 2,
+        "col": 29,
+        "x": -4.05,
+        "y": 9.525
+      },
+      "path_len": 30
+    },
+    {
+      "world_id": 9,
+      "filename": "barn_0009.world",
+      "seed": 18,
+      "fill_pct": 0.157,
+      "obs_pct": 0.12,
+      "difficulty": "easy",
+      "start": {
+        "row": 2,
+        "col": 0,
+        "x": -4.05,
+        "y": 5.175
+      },
+      "goal": {
+        "row": 10,
+        "col": 29,
+        "x": -2.85,
+        "y": 9.525
+      },
+      "path_len": 30
+    },
+    {
+      "world_id": 10,
+      "filename": "barn_0010.world",
+      "seed": 20,
+      "fill_pct": 0.177,
+      "obs_pct": 0.176,
+      "difficulty": "medium",
+      "start": {
+        "row": 3,
+        "col": 0,
+        "x": -3.9,
+        "y": 5.175
+      },
+      "goal": {
+        "row": 10,
+        "col": 29,
+        "x": -2.85,
+        "y": 9.525
+      },
+      "path_len": 32
+    },
+    {
+      "world_id": 11,
+      "filename": "barn_0011.world",
+      "seed": 22,
+      "fill_pct": 0.17,
+      "obs_pct": 0.14,
+      "difficulty": "easy",
+      "start": {
+        "row": 3,
+        "col": 0,
+        "x": -3.9,
+        "y": 5.175
+      },
+      "goal": {
+        "row": 2,
+        "col": 29,
+        "x": -4.05,
+        "y": 9.525
+      },
+      "path_len": 30
+    },
+    {
+      "world_id": 12,
+      "filename": "barn_0012.world",
+      "seed": 24,
+      "fill_pct": 0.158,
+      "obs_pct": 0.118,
+      "difficulty": "easy",
+      "start": {
+        "row": 2,
+        "col": 0,
+        "x": -4.05,
+        "y": 5.175
+      },
+      "goal": {
+        "row": 21,
+        "col": 29,
+        "x": -1.2,
+        "y": 9.525
+      },
+      "path_len": 30
+    },
+    {
+      "world_id": 13,
+      "filename": "barn_0013.world",
+      "seed": 26,
+      "fill_pct": 0.17,
+      "obs_pct": 0.174,
+      "difficulty": "medium",
+      "start": {
+        "row": 8,
+        "col": 0,
+        "x": -3.15,
+        "y": 5.175
+      },
+      "goal": {
+        "row": 10,
+        "col": 29,
+        "x": -2.85,
+        "y": 9.525
+      },
+      "path_len": 30
+    },
+    {
+      "world_id": 14,
+      "filename": "barn_0014.world",
+      "seed": 28,
+      "fill_pct": 0.21,
+      "obs_pct": 0.207,
+      "difficulty": "medium",
+      "start": {
+        "row": 9,
+        "col": 0,
+        "x": -3.0,
+        "y": 5.175
+      },
+      "goal": {
+        "row": 10,
+        "col": 29,
+        "x": -2.85,
+        "y": 9.525
+      },
+      "path_len": 30
+    },
+    {
+      "world_id": 15,
+      "filename": "barn_0015.world",
+      "seed": 32,
+      "fill_pct": 0.181,
+      "obs_pct": 0.159,
+      "difficulty": "medium",
+      "start": {
+        "row": 15,
+        "col": 0,
+        "x": -2.1,
+        "y": 5.175
+      },
+      "goal": {
+        "row": 10,
+        "col": 29,
+        "x": -2.85,
+        "y": 9.525
+      },
+      "path_len": 30
+    },
+    {
+      "world_id": 16,
+      "filename": "barn_0016.world",
+      "seed": 34,
+      "fill_pct": 0.182,
+      "obs_pct": 0.089,
+      "difficulty": "easy",
+      "start": {
+        "row": 2,
+        "col": 0,
+        "x": -4.05,
+        "y": 5.175
+      },
+      "goal": {
+        "row": 2,
+        "col": 29,
+        "x": -4.05,
+        "y": 9.525
+      },
+      "path_len": 30
+    },
+    {
+      "world_id": 17,
+      "filename": "barn_0017.world",
+      "seed": 36,
+      "fill_pct": 0.211,
+      "obs_pct": 0.198,
+      "difficulty": "medium",
+      "start": {
+        "row": 5,
+        "col": 0,
+        "x": -3.6,
+        "y": 5.175
+      },
+      "goal": {
+        "row": 10,
+        "col": 29,
+        "x": -2.85,
+        "y": 9.525
+      },
+      "path_len": 30
+    },
+    {
+      "world_id": 18,
+      "filename": "barn_0018.world",
+      "seed": 38,
+      "fill_pct": 0.233,
+      "obs_pct": 0.191,
+      "difficulty": "medium",
+      "start": {
+        "row": 5,
+        "col": 0,
+        "x": -3.6,
+        "y": 5.175
+      },
+      "goal": {
+        "row": 2,
+        "col": 29,
+        "x": -4.05,
+        "y": 9.525
+      },
+      "path_len": 42
+    },
+    {
+      "world_id": 19,
+      "filename": "barn_0019.world",
+      "seed": 40,
+      "fill_pct": 0.245,
+      "obs_pct": 0.26,
+      "difficulty": "hard",
+      "start": {
+        "row": 8,
+        "col": 0,
+        "x": -3.15,
+        "y": 5.175
+      },
+      "goal": {
+        "row": 10,
+        "col": 29,
+        "x": -2.85,
+        "y": 9.525
+      },
+      "path_len": 34
+    },
+    {
+      "world_id": 20,
+      "filename": "barn_0020.world",
+      "seed": 42,
+      "fill_pct": 0.251,
+      "obs_pct": 0.248,
+      "difficulty": "medium",
+      "start": {
+        "row": 3,
+        "col": 0,
+        "x": -3.9,
+        "y": 5.175
+      },
+      "goal": {
+        "row": 25,
+        "col": 29,
+        "x": -0.6,
+        "y": 9.525
+      },
+      "path_len": 38
+    },
+    {
+      "world_id": 21,
+      "filename": "barn_0021.world",
+      "seed": 44,
+      "fill_pct": 0.221,
+      "obs_pct": 0.203,
+      "difficulty": "medium",
+      "start": {
+        "row": 13,
+        "col": 0,
+        "x": -2.4,
+        "y": 5.175
+      },
+      "goal": {
+        "row": 10,
+        "col": 29,
+        "x": -2.85,
+        "y": 9.525
+      },
+      "path_len": 33
+    },
+    {
+      "world_id": 22,
+      "filename": "barn_0022.world",
+      "seed": 46,
+      "fill_pct": 0.232,
+      "obs_pct": 0.211,
+      "difficulty": "medium",
+      "start": {
+        "row": 2,
+        "col": 0,
+        "x": -4.05,
+        "y": 5.175
+      },
+      "goal": {
+        "row": 10,
+        "col": 29,
+        "x": -2.85,
+        "y": 9.525
+      },
+      "path_len": 34
+    },
+    {
+      "world_id": 23,
+      "filename": "barn_0023.world",
+      "seed": 48,
+      "fill_pct": 0.268,
+      "obs_pct": 0.254,
+      "difficulty": "hard",
+      "start": {
+        "row": 12,
+        "col": 0,
+        "x": -2.55,
+        "y": 5.175
+      },
+      "goal": {
+        "row": 13,
+        "col": 29,
+        "x": -2.4,
+        "y": 9.525
+      },
+      "path_len": 30
+    },
+    {
+      "world_id": 24,
+      "filename": "barn_0024.world",
+      "seed": 50,
+      "fill_pct": 0.266,
+      "obs_pct": 0.251,
+      "difficulty": "hard",
+      "start": {
+        "row": 2,
+        "col": 0,
+        "x": -4.05,
+        "y": 5.175
+      },
+      "goal": {
+        "row": 11,
+        "col": 29,
+        "x": -2.7,
+        "y": 9.525
+      },
+      "path_len": 32
+    },
+    {
+      "world_id": 25,
+      "filename": "barn_0025.world",
+      "seed": 52,
+      "fill_pct": 0.246,
+      "obs_pct": 0.236,
+      "difficulty": "medium",
+      "start": {
+        "row": 12,
+        "col": 0,
+        "x": -2.55,
+        "y": 5.175
+      },
+      "goal": {
+        "row": 2,
+        "col": 29,
+        "x": -4.05,
+        "y": 9.525
+      },
+      "path_len": 32
+    },
+    {
+      "world_id": 26,
+      "filename": "barn_0026.world",
+      "seed": 58,
+      "fill_pct": 0.278,
+      "obs_pct": 0.26,
+      "difficulty": "hard",
+      "start": {
+        "row": 8,
+        "col": 0,
+        "x": -3.15,
+        "y": 5.175
+      },
+      "goal": {
+        "row": 10,
+        "col": 29,
+        "x": -2.85,
+        "y": 9.525
+      },
+      "path_len": 37
+    },
+    {
+      "world_id": 27,
+      "filename": "barn_0027.world",
+      "seed": 66,
+      "fill_pct": 0.282,
+      "obs_pct": 0.303,
+      "difficulty": "hard",
+      "start": {
+        "row": 12,
+        "col": 0,
+        "x": -2.55,
+        "y": 5.175
+      },
+      "goal": {
+        "row": 11,
+        "col": 29,
+        "x": -2.7,
+        "y": 9.525
+      },
+      "path_len": 40
+    },
+    {
+      "world_id": 28,
+      "filename": "barn_0028.world",
+      "seed": 72,
+      "fill_pct": 0.284,
+      "obs_pct": 0.306,
+      "difficulty": "hard",
+      "start": {
+        "row": 5,
+        "col": 0,
+        "x": -3.6,
+        "y": 5.175
+      },
+      "goal": {
+        "row": 14,
+        "col": 29,
+        "x": -2.25,
+        "y": 9.525
+      },
+      "path_len": 32
+    },
+    {
+      "world_id": 29,
+      "filename": "barn_0029.world",
+      "seed": 88,
+      "fill_pct": 0.295,
+      "obs_pct": 0.258,
+      "difficulty": "hard",
+      "start": {
+        "row": 3,
+        "col": 0,
+        "x": -3.9,
+        "y": 5.175
+      },
+      "goal": {
+        "row": 2,
+        "col": 29,
+        "x": -4.05,
+        "y": 9.525
+      },
+      "path_len": 49
+    }
+  ]
+}

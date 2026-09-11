@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="tb3_progressive">
+    <physics type="ode"><max_step_size>0.001</max_step_size><real_time_factor>1</real_time_factor></physics>
+    <include><uri>model://sun</uri></include>
+    <include><uri>model://ground_plane</uri></include>
+
+    <!-- Progressive narrowing corridor: 2m start, 0.65m pinch, 2m end -->
+    <!-- 20m total length -->
+
+    <!-- Left wall: starts at y=2, steps inward -->
+    <model name="wall_L1"><static>true</static><pose>3 2.0 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><box><size>6 0.3 1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>6 0.3 1</size></box></geometry><material><ambient>0.7 0.7 0.7 1</ambient></material></visual></link></model>
+    <!-- Right wall: starts at y=8 -->
+    <model name="wall_R1"><static>true</static><pose>3 8.0 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><box><size>6 0.3 1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>6 0.3 1</size></box></geometry><material><ambient>0.7 0.7 0.7 1</ambient></material></visual></link></model>
+
+    <!-- Narrowing section: left wall goes y=3.5, right goes y=6.5 → 3m wide -->
+    <model name="wall_L2"><static>true</static><pose>8 3.5 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><box><size>4 0.3 1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>4 0.3 1</size></box></geometry><material><ambient>0.7 0.7 0.7 1</ambient></material></visual></link></model>
+    <model name="wall_R2"><static>true</static><pose>8 6.5 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><box><size>4 0.3 1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>4 0.3 1</size></box></geometry><material><ambient>0.7 0.7 0.7 1</ambient></material></visual></link></model>
+
+    <!-- Pinch point: 0.65m gap at x=11 (y=4.68 to y=5.33) -->
+    <model name="pinch_L"><static>true</static><pose>11 4.68 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><box><size>0.5 0.5 1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.5 0.5 1</size></box></geometry><material><ambient>0.9 0.3 0.3 1</ambient></material></visual></link></model>
+    <model name="pinch_R"><static>true</static><pose>11 5.33 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><box><size>0.5 0.5 1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.5 0.5 1</size></box></geometry><material><ambient>0.9 0.3 0.3 1</ambient></material></visual></link></model>
+
+    <!-- After pinch: widens back to y=3 to y=7 (4m wide) -->
+    <model name="wall_L3"><static>true</static><pose>15 3.0 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><box><size>8 0.3 1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>8 0.3 1</size></box></geometry><material><ambient>0.7 0.7 0.7 1</ambient></material></visual></link></model>
+    <model name="wall_R3"><static>true</static><pose>15 7.0 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><box><size>8 0.3 1</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>8 0.3 1</size></box></geometry><material><ambient>0.7 0.7 0.7 1</ambient></material></visual></link></model>
+
+    <include><uri>model://turtlebot3_burger</uri><name>turtlebot3</name><pose>0 5 0.01 0 0 0</pose></include>
+  </world>
+</sdf>

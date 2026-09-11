@@ -1,0 +1,14 @@
+numpy
+cvxpy
+cvxpylayers
+ecos
+matplotlib
+scipy
+torch
+rich
+pyyaml
+scikit-learn
+gctl==1.2
+
+# Optional simulation dependency used by example/ and experiments/.
+ir-sim>=2.4.0

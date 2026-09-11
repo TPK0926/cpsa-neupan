@@ -1,0 +1,55 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="tb3_irs_convex">
+    <physics type="ode"><max_step_size>0.001</max_step_size><real_time_factor>1</real_time_factor></physics>
+    <include><uri>model://sun</uri></include>
+    <include><uri>model://ground_plane</uri></include>
+    <model name="obs_0"><static>true</static><pose>3.000 4.680 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><cylinder><radius>0.180</radius><length>1.0</length></cylinder></geometry></collision>
+        <visual name="v"><geometry><cylinder><radius>0.180</radius><length>1.0</length></cylinder></geometry>
+          <material><ambient>0.85 0.35 0.25 1</ambient></material></visual></link></model>
+    <model name="obs_1"><static>true</static><pose>4.320 5.160 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><cylinder><radius>0.120</radius><length>1.0</length></cylinder></geometry></collision>
+        <visual name="v"><geometry><cylinder><radius>0.120</radius><length>1.0</length></cylinder></geometry>
+          <material><ambient>0.85 0.35 0.25 1</ambient></material></visual></link></model>
+    <model name="obs_2"><static>true</static><pose>1.800 3.000 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><cylinder><radius>0.120</radius><length>1.0</length></cylinder></geometry></collision>
+        <visual name="v"><geometry><cylinder><radius>0.120</radius><length>1.0</length></cylinder></geometry>
+          <material><ambient>0.85 0.35 0.25 1</ambient></material></visual></link></model>
+    <model name="obs_3"><static>true</static><pose>5.520 3.600 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><cylinder><radius>0.120</radius><length>1.0</length></cylinder></geometry></collision>
+        <visual name="v"><geometry><cylinder><radius>0.120</radius><length>1.0</length></cylinder></geometry>
+          <material><ambient>0.85 0.35 0.25 1</ambient></material></visual></link></model>
+    <model name="obs_4"><static>true</static><pose>3.000 2.160 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><cylinder><radius>0.120</radius><length>1.0</length></cylinder></geometry></collision>
+        <visual name="v"><geometry><cylinder><radius>0.120</radius><length>1.0</length></cylinder></geometry>
+          <material><ambient>0.85 0.35 0.25 1</ambient></material></visual></link></model>
+    <model name="obs_5"><static>true</static><pose>2.520 3.720 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><cylinder><radius>0.120</radius><length>1.0</length></cylinder></geometry></collision>
+        <visual name="v"><geometry><cylinder><radius>0.120</radius><length>1.0</length></cylinder></geometry>
+          <material><ambient>0.85 0.35 0.25 1</ambient></material></visual></link></model>
+    <model name="obs_6"><static>true</static><pose>1.800 3.480 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><cylinder><radius>0.120</radius><length>1.0</length></cylinder></geometry></collision>
+        <visual name="v"><geometry><cylinder><radius>0.120</radius><length>1.0</length></cylinder></geometry>
+          <material><ambient>0.85 0.35 0.25 1</ambient></material></visual></link></model>
+    <model name="obs_7"><static>true</static><pose>2.760 3.000 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><cylinder><radius>0.120</radius><length>1.0</length></cylinder></geometry></collision>
+        <visual name="v"><geometry><cylinder><radius>0.120</radius><length>1.0</length></cylinder></geometry>
+          <material><ambient>0.85 0.35 0.25 1</ambient></material></visual></link></model>
+    <model name="obs_8"><static>true</static><pose>2.520 3.720 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><cylinder><radius>0.120</radius><length>1.0</length></cylinder></geometry></collision>
+        <visual name="v"><geometry><cylinder><radius>0.120</radius><length>1.0</length></cylinder></geometry>
+          <material><ambient>0.85 0.35 0.25 1</ambient></material></visual></link></model>
+    <model name="obs_9"><static>true</static><pose>2.880 3.720 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><cylinder><radius>0.120</radius><length>1.0</length></cylinder></geometry></collision>
+        <visual name="v"><geometry><cylinder><radius>0.120</radius><length>1.0</length></cylinder></geometry>
+          <material><ambient>0.85 0.35 0.25 1</ambient></material></visual></link></model>
+    <model name="obs_10"><static>true</static><pose>0.600 0.600 0.5 0 0 0</pose>
+      <link name="link"><collision name="c"><geometry><box><size>0.240 0.480 1.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.240 0.480 1.0</size></box></geometry>
+          <material><ambient>0.6 0.5 0.7 1</ambient></material></visual></link></model>
+
+    <include><uri>model://turtlebot3_burger</uri><name>turtlebot3</name>
+      <pose>0.200 2.600 0.01 0 0 0</pose></include>
+  </world>
+</sdf>

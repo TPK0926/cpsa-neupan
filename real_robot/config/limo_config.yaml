@@ -1,0 +1,79 @@
+# LIMO Robot Configuration for NeuPAN Real-World Navigation
+# Robot: AgileX LIMO (differential drive)
+# Dimensions: 322mm x 220mm x 245mm (L x W x H)
+# LiDAR: EAI X2L (360 deg, 0.1-8m range, ~500 points/scan)
+
+# ── MPC parameters ──
+receding: 8                    # Receding horizon (reduced from 10 for real-time on LIMO CPU)
+step_time: 0.1                 # 100ms control cycle (10Hz)
+ref_speed: 0.3                 # Conservative reference speed for real-world (m/s)
+device: 'cpu'                  # LIMO likely has no CUDA GPU
+time_print: False              # Disable timing prints for reduced latency
+collision_threshold: 0.06      # 6cm collision threshold for small LIMO robot
+
+# ── Robot kinematics ──
+robot:
+  kinematics: 'diff'
+  max_speed: [1.0, 1.5]        # [linear m/s, angular rad/s]
+  max_acce: [0.5, 1.0]         # [linear m/s^2, angular rad/s^2]
+  length: 0.322                # LIMO body length (m)
+  width: 0.220                 # LIMO body width (m)
+
+# ── Initial path ──
+ipath:
+  waypoints: [[0, 20, 0], [60, 20, 0]]
+  curve_style: 'line'
+  min_radius: 2.0
+  loop: False
+  arrive_threshold: 0.15
+  close_threshold: 0.15
+  ind_range: 8
+  arrive_index_threshold: 3
+
+# ── PAN (Proximal Alternating-minimization Network) ──
+pan:
+  iter_num: 2
+  dune_max_num: 100
+  nrmp_max_num: 10
+  dune_checkpoint: 'example/model/limo_robot/model_5000.pth'
+  iter_threshold: 0.1
+
+# ── Adjust parameters ──
+adjust:
+  q_s: 1.0
+  p_u: 1.0
+  eta: 15.0
+  d_max: 1.0
+  d_min: 0.04                   # 4cm min distance for small robot
+
+# ── LiDAR parameters ──
+lidar:
+  angle_min: -3.14159           # -180 deg (full 360 for LIMO EAI X2L)
+  angle_max: 3.14159            # +180 deg
+  range_min: 0.10               # 10cm min range
+  range_max: 8.0                # 8m max range
+  use_angle_range: [-1.5708, 1.5708]  # Front 180 deg for navigation
+  down_sample: 1                # No downsampling
+  scan_offset: [0.06, 0.0, 0.0]  # LiDAR offset from robot center [x, y, theta]
+
+# ── Safety parameters ──
+safety:
+  emergency_stop_range: 0.12    # Emergency stop if any point < 12cm
+  warning_range: 0.20           # Warning threshold 20cm
+  max_episode_steps: 300        # 30 seconds at 10Hz
+  goal_arrival_threshold: 0.2   # 20cm from goal = arrived
+
+# ── Experiment parameters ──
+experiment:
+  n_episodes: 20                # Episodes per condition
+  inter_episode_pause: 3.0      # Seconds between episodes
+  goal_positions:                # Goal positions for different environments
+    corridor: [4.0, 0.0]
+    obstacle_field: [3.5, 3.5]
+    narrow_passage: [3.0, 0.0]
+    dynamic_obstacle: [4.0, 0.0]
+  start_positions:
+    corridor: [0.0, 0.0, 0.0]
+    obstacle_field: [0.0, 0.0, 0.0]
+    narrow_passage: [0.0, 0.0, 0.0]
+    dynamic_obstacle: [0.0, 0.0, 0.0]
