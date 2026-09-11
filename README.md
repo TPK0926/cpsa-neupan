@@ -14,6 +14,7 @@ This repository is intentionally source-code focused. Experiment batches, genera
 - `neupan/risk_calibration/`: conformal calibration and risk-budget allocation utilities.
 - `neupan/robot/`: robot kinematic models used by the planner.
 - `neupan/baselines/`: baseline safety-allocation and uncertainty modules retained for source-level comparison.
+- `training/`: clean CPSA risk-network training entry point for prepared point-level data.
 - `gazebo_sim/`: Gazebo integration reference code, launch files, models, and worlds.
 
 ## Installation
@@ -43,6 +44,18 @@ allocator = RiskBudgetAllocator(strategy="cpsa")
 ```
 
 Planner construction requires a robot configuration, path generator configuration, optimization block configuration, and trained distance/safety models matching the target platform. Those deployment assets are intentionally not bundled in this source-only release.
+
+## Training
+
+The public training entry point is provided in `training/train_cpsa.py`. It trains the CPSA risk network from prepared point-level navigation data and saves a checkpoint with conformal calibration statistics. Raw rollout data and pretrained checkpoints are not included.
+
+```bash
+python training/train_cpsa.py \
+  --data /path/to/cpsa_point_data.pt \
+  --output checkpoints/cpsa_v4.pth
+```
+
+See `training/README.md` for the expected data fields.
 
 ## Gazebo Integration
 
